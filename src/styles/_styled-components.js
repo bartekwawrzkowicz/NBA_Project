@@ -7,7 +7,6 @@ export const HeaderCard = styled.div`
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    background-color: #443b4e;
     width: 94vw;
     height: 100px;
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), url(${spalding_balls});

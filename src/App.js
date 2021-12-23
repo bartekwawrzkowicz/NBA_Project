@@ -2,19 +2,12 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 import { MainContext } from './context/MainContext';
+import { _API } from './data/api';
 
 import Header from './components/Header';
 import Hero from './components/Hero';
-
-
-const _API = {
-    method: 'GET',
-    url: 'https://api-nba-v1.p.rapidapi.com/players/lastName/james',
-    headers: {
-        'x-rapidapi-host': 'api-nba-v1.p.rapidapi.com',
-        'x-rapidapi-key': '88b6dba000mshc85ab2e2f383dabp127fb3jsnbcf212a3d706'
-    }
-};
+import Loading from './components/Loading';
+import SearchBar from './components/SearchBar';
 
 const App = () => {
     const [newData, setNewData] = useState([]);
@@ -29,12 +22,18 @@ const App = () => {
         setIsLoading(false)
     }, []);
 
+    console.log(newData);
+
     return (
-        <MainContext.Provider value={newData}>
-            <Header />
-            <Hero />
-        </MainContext.Provider>
-    );
+        isLoading ?
+            <Loading />
+            :
+            <MainContext.Provider value={newData}>
+                <Header />
+                <Hero />
+                <SearchBar />
+            </MainContext.Provider>
+    )
 }
 
 export default App;
